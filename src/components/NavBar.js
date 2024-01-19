@@ -7,14 +7,13 @@ import {
   DrawerContent,
   useColorModeValue,
   Stack,
-  useColorMode,
   IconButton,
   useMediaQuery,
   useDisclosure,
   HStack,
   Link,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "./ProfileArray";
 const TbIcons = require("react-icons/tb");
@@ -33,7 +32,6 @@ export default function Nav({ color }) {
   "teal": "#319795", 
   "yellow": "#D69E2E"};
   const [scroll, setScroll] = useState(false);
-  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
@@ -45,14 +43,7 @@ export default function Nav({ color }) {
     const aboutSection = document.querySelector("#about");
     aboutSection.scrollIntoView({ behavior: "smooth" });
   };
-  // const scrollToExperience = () => {
-  //   const experienceSection = document.querySelector("#experience");
-  //   experienceSection.scrollIntoView({ behavior: "smooth" });
-  // };
-  // const scrollToProjects = () => {
-  //   const projectsSection = document.querySelector("#projects");
-  //   projectsSection.scrollIntoView({ behavior: "smooth" });
-  // };
+
   const scrollToContact = () => {
     const contactSection = document.querySelector("#contact");
     contactSection.scrollIntoView({ behavior: "smooth" });
@@ -108,9 +99,6 @@ export default function Nav({ color }) {
             ) : (
               <></>
             )}
-            <Button onClick={toggleColorMode}>
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button>
 
             {isLargerThanMD ? (
               <></>
